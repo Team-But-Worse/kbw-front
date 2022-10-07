@@ -5,16 +5,14 @@ import Button from 'react-bootstrap/Button'
 
 
 class UserInput extends React.Component {
-
-    submitData = (event) => {
-        event.preventDefault();
-        console.log('rats')
-    }
     render() {
         return (<>
-        <Form onSubmit={this.submitData}>
-            <Form.Control></Form.Control>
+        <Form onSubmit={this.props.submitData}>
+            <Form.Group controlId="idea">
+                <Form.Label>Tell us your idea!</Form.Label>
+            <Form.Control name="idea"/>
             <Button type='submit'>Submit</Button>
+            </Form.Group>
         </Form>
         </>)
     }
