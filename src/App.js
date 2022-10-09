@@ -1,6 +1,7 @@
 import UserInput from './UserInput'
 import io from 'socket.io-client'
 import React from 'react';
+// require('dotenv').config();
 
 const URL = process.env.URL || 'http://localhost:3002/messages'
 const socket = io.connect(URL);
