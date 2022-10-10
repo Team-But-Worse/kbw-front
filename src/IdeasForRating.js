@@ -8,7 +8,7 @@ class IdeasForRating extends React.Component {
         if (this.props.questions[0]){
         
            let arr =  this.props.questions.map((question, idx) => {
-                return <Form key={idx} onSubmit={this.props.submitAnswer}>
+                return <Form key={idx} onSubmit={(event) => this.props.submitAnswer(question, event)}>
                     <Form.Group controlId="answers">
                 <Accordion.Header>{question.idea}</Accordion.Header>
                 <Accordion.Body>
@@ -34,5 +34,6 @@ class IdeasForRating extends React.Component {
 
     )}
 }
+
 
 export default IdeasForRating;
