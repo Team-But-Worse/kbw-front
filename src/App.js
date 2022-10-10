@@ -16,37 +16,44 @@ class App extends React.Component {
   }
   componentDidMount(){
     socket.on('answers', (payload) => {
-      console.log(this.state.answers)
-      let newAnswers = [...this.state.answers];
-      newAnswers[newAnswers.length] = payload;
+      let newAnswer = payload;
+      console.log(payload)
+      alert(payload.answer)
       this.setState({
-        answers: newAnswers
+        answers: [...this.state.answers, newAnswer]
       })
     } )
     socket.on('questions', (payload) => {
-      let newQuestions = [...this.state.questions];
-      newQuestions[newQuestions.length] = payload;
+      let newQuestions = payload;
       this.setState({
-        questions: newQuestions
+        questions: [...this.state.questions, newQuestions]
       })
     } )
   }
-submitData = (event) => {
+submitQuestion = (event) => {
   event.preventDefault();
-  console.log(this.state.answers)
   console.log(this.state.questions)
   socket.emit('questions', {
     id: socket.id,
     idea: event.target.idea.value
   })
 }
+submitAnswer = (event) => {
+  event.preventDefault();
+  console.log(event.target.answers.value)
+  socket.emit('answers', {
+    id: socket.id,
+    answer: event.target.answers.value
+  })
+}
 render(){
   return (<>
     <h1>hello world</h1>
     <UserInput
-    submitData={this.submitData}/>
+    submitQuestion={this.submitQuestion}/>
     <IdeasForRating
-    questions={this.state.questions}/>
+    questions={this.state.questions}
+    submitAnswer={this.submitAnswer}/>
     </>
     
   );

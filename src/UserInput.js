@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 class UserInput extends React.Component {
     render() {
         return (<>
-        <Form onSubmit={this.props.submitData}>
+        <Form onSubmit={this.props.submitQuestion}>
             <Form.Group controlId="idea">
                 <Form.Label>Tell us your idea!</Form.Label>
             <Form.Control name="idea"/>
