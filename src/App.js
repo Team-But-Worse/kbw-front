@@ -3,8 +3,9 @@ import io from 'socket.io-client'
 import React from 'react';
 import IdeasForRating from './IdeasForRating'
 // require('dotenv').config();
-// 'https://kbw-back-end.herokuapp.com/messages'
-const URL = 'https://kbw-back-end.herokuapp.com/messages'
+
+
+const URL = 'https://kbw-back-end.herokuapp.com/messages' || 'http://localhost:3002/messages'
 const socket = io.connect(URL);
 class App extends React.Component {
   constructor(props){
@@ -56,7 +57,7 @@ render(){
     questions={this.state.questions}
     submitAnswer={this.submitAnswer}/>
     </>
-    
+
   );
 }}
 

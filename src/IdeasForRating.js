@@ -35,4 +35,5 @@ class IdeasForRating extends React.Component {
     )}
 }
 
+
 export default IdeasForRating;
