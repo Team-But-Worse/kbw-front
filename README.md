@@ -28,8 +28,6 @@ Liberal use of console logs to track errors.
 
 ## Documentation
 
-Compose a UML or Process/Data Flow Diagram for every application
-UML Reference
 ![Lab14 UML](./images/Lab14-UML-1.jpg)
 
 ## Contributions
