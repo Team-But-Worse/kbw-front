@@ -2,9 +2,9 @@ import UserInput from './UserInput'
 import io from 'socket.io-client'
 import React from 'react';
 import IdeasForRating from './IdeasForRating'
-// require('dotenv').config();
+require('dotenv').config();
 
-const URL = process.env.URL || 'http://localhost:3002/messages'
+const URL = process.env.SERVER_URL || 'http://localhost:3002/messages'
 const socket = io.connect(URL);
 class App extends React.Component {
   constructor(props){
