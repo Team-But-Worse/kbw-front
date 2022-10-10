@@ -3,8 +3,8 @@ import io from 'socket.io-client'
 import React from 'react';
 import IdeasForRating from './IdeasForRating'
 // require('dotenv').config();
-
-const URL = 'https://kbw-back-end.herokuapp.com/messages' || 'http://localhost:3002/messages'
+// 'https://kbw-back-end.herokuapp.com/messages'
+const URL = 'https://kbw-back-end.herokuapp.com/messages'
 const socket = io.connect(URL);
 class App extends React.Component {
   constructor(props){
@@ -18,7 +18,7 @@ class App extends React.Component {
     socket.on('answers', (payload) => {
       let newAnswer = payload;
       console.log(payload)
-      alert(payload.answer)
+      alert(payload.idea + ' : ' + payload.answer)
       this.setState({
         answers: [...this.state.answers, newAnswer]
       })
@@ -38,17 +38,18 @@ submitQuestion = (event) => {
     idea: event.target.idea.value
   })
 }
-submitAnswer = (event) => {
+submitAnswer = (question, event) => {
   event.preventDefault();
   console.log(event.target.answers.value)
   socket.emit('answers', {
     id: socket.id,
-    answer: event.target.answers.value
+    answer: event.target.answers.value,
+    idea: question.idea,
   })
 }
 render(){
   return (<>
-    <h1>hello world</h1>
+    <h1>Idea Rater</h1>
     <UserInput
     submitQuestion={this.submitQuestion}/>
     <IdeasForRating
