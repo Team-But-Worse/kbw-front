@@ -1,11 +1,21 @@
 import React from "react";
 
 class IdeasForRating extends React.Component {
-    render(){
-        return <>
-        <h1>test</h1>
-        </>
+    renderQuestions = () => {
+        if (this.props.questions[0]){
+        
+           let arr =  this.props.questions.map((question, idx) => {
+                return <p key={idx}>{question.question}</p>
+            })
+            return arr;
+        }
     }
+    render(){
+
+        return (<>
+        {this.renderQuestions()}
+        </>
+    )}
 }
 
 export default IdeasForRating;
